@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Hanami RSpec generators and Rake tasks"
   spec.homepage      = "https://hanamirb.org"
   spec.license       = "MIT"
-  spec.required_ruby_version = ">= 3.1"
+  spec.required_ruby_version = ">= 3.2"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 

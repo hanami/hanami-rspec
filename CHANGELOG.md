@@ -2,9 +2,15 @@
 
 RSpec support for Hanami
 
+## v2.3.0.beta2 - 2025-10-17
+
+### Changed
+
+- Drop support for Ruby 3.1
+
 ## v2.3.0.beta1 - 2025-10-03
 
-## Changed
+### Changed
 
 - [Aaron Allen] Change shared context name in generated `spec/support/requests.rb` to avoid a RuboCop RSpec offense (#40)
 

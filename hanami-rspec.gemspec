@@ -5,8 +5,8 @@ require_relative "lib/hanami/rspec/version"
 Gem::Specification.new do |spec|
   spec.name          = "hanami-rspec"
   spec.version       = Hanami::RSpec::VERSION
-  spec.authors       = ["Luca Guidi"]
-  spec.email         = ["me@lucaguidi.com"]
+  spec.authors       = ["Hanakai team"]
+  spec.email         = ["info@hanakai.org"]
 
   spec.summary       = "Hanami RSpec"
   spec.description   = "Hanami RSpec generators and Rake tasks"

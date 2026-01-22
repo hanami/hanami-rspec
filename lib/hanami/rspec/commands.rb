@@ -114,9 +114,20 @@ module Hanami
         # @since 2.0.0
         # @api private
         class Slice < Hanami::CLI::Command
-          # FIXME: dry-cli kwargs aren't correctly forwarded in Ruby 3
-          def call(options, **)
-            slice = inflector.underscore(Shellwords.shellescape(options[:name]))
+          # @since 2.0.0
+          # @api private
+          def call(options = nil, name: nil, **)
+            # Support multiple calling conventions for dry-cli cross-version compatibility:
+            #
+            # - dry-cli 1.3 calls with positional hash: call({name: "foo"})
+            # - dry-cli 1.4+: calls with keyword arguments: call(name: "foo")
+            #
+            # TODO: Remove this with Hanami 2.4 (which will require dry-cli 1.4+).
+            if options.is_a?(Hash)
+              name = options[:name]
+            end
+
+            slice = inflector.underscore(Shellwords.shellescape(name))
 
             generator = Generators::Slice.new(fs: fs, inflector: inflector)
             generator.call(slice)
@@ -128,13 +139,23 @@ module Hanami
         class Action < Hanami::CLI::Commands::App::Command
           # @since 2.0.0
           # @api private
-          def call(options, **)
-            # FIXME: dry-cli kwargs aren't correctly forwarded in Ruby 3
+          def call(options = nil, name: nil, slice: nil, skip_tests: false, **)
+            # Support multiple calling conventions for dry-cli cross-version compatibility:
+            #
+            # - dry-cli 1.3 calls with positional hash: call({name: "foo"})
+            # - dry-cli 1.4+: calls with keyword arguments: call(name: "foo")
+            #
+            # TODO: Remove this with Hanami 2.4 (which will require dry-cli 1.4+).
+            if options.is_a?(Hash)
+              name = options[:name]
+              slice = options[:slice]
+              skip_tests = options[:skip_tests] || false
+            end
 
-            return if options[:skip_tests]
+            return if skip_tests
 
-            slice = inflector.underscore(Shellwords.shellescape(options[:slice])) if options[:slice]
-            key = inflector.underscore(Shellwords.shellescape(options[:name]))
+            slice = inflector.underscore(Shellwords.shellescape(slice)) if slice
+            key = inflector.underscore(Shellwords.shellescape(name))
 
             namespace = slice ? inflector.camelize(slice) : app.namespace
             base_path = slice ? "spec/slices/#{slice}" : "spec"
@@ -149,13 +170,23 @@ module Hanami
         class Part < Hanami::CLI::Commands::App::Command
           # @since 2.1.0
           # @api private
-          def call(options, **)
-            # FIXME: dry-cli kwargs aren't correctly forwarded in Ruby 3
+          def call(options = nil, name: nil, slice: nil, skip_tests: false, **)
+            # Support multiple calling conventions for dry-cli cross-version compatibility:
+            #
+            # - dry-cli 1.3 calls with positional hash: call({name: "foo"})
+            # - dry-cli 1.4+: calls with keyword arguments: call(name: "foo")
+            #
+            # TODO: Remove this with Hanami 2.4 (which will require dry-cli 1.4+).
+            if options.is_a?(Hash)
+              name = options[:name]
+              slice = options[:slice]
+              skip_tests = options[:skip_tests] || false
+            end
 
-            return if options[:skip_tests]
+            return if skip_tests
 
-            slice = inflector.underscore(Shellwords.shellescape(options[:slice])) if options[:slice]
-            name = inflector.underscore(Shellwords.shellescape(options[:name]))
+            slice = inflector.underscore(Shellwords.shellescape(slice)) if slice
+            name = inflector.underscore(Shellwords.shellescape(name))
 
             generator = Generators::Part.new(fs: fs, inflector: inflector)
             generator.call(app.namespace, slice, name)

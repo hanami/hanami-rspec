@@ -9,7 +9,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Slice do
     let(:slice) { "main" }
 
     it "generates spec files" do
-      subject.call({name: slice})
+      subject.call(name: slice)
 
       # spec/<slice>/action_spec.rb
       action_spec = <<~EXPECTED

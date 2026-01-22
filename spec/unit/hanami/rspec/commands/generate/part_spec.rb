@@ -17,7 +17,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
       context "without base part" do
         it "generates spec file" do
           within_application_directory do
-            subject.call({name: part_name})
+            subject.call(name: part_name)
 
             base_part_spec = <<~EXPECTED
               # frozen_string_literal: true
@@ -55,7 +55,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
           within_application_directory do
             fs.touch("spec/views/part_spec.rb")
 
-            subject.call({name: part_name})
+            subject.call(name: part_name)
 
             part_spec = <<~EXPECTED
               # frozen_string_literal: true
@@ -78,7 +78,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
       context "skip_tests given" do
         it "does not generate spec file" do
           within_application_directory do
-            subject.call({name: part_name, skip_tests: true})
+            subject.call(name: part_name, skip_tests: true)
 
             expect(fs.exist?("spec/views/parts/client_spec.rb")).to be false
           end
@@ -93,7 +93,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
       context "without base part" do
         it "generates spec file" do
           within_application_directory do
-            subject.call({slice: slice, name: part_name})
+            subject.call(slice: slice, name: part_name)
 
             base_part_spec = <<~EXPECTED
               # frozen_string_literal: true
@@ -146,7 +146,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
             fs.touch("spec/views/part_spec.rb")
             fs.touch("spec/slices/#{slice}/views/part_spec.rb")
 
-            subject.call({slice: slice, name: part_name})
+            subject.call(slice: slice, name: part_name)
 
             part_spec = <<~EXPECTED
               # frozen_string_literal: true
@@ -168,7 +168,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
       context "skip_tests given" do
         it "does not generate spec file" do
           within_application_directory do
-            subject.call({slice: slice, name: part_name, skip_tests: true})
+            subject.call(slice: slice, name: part_name, skip_tests: true)
 
             expect(fs.exist?("spec/slices/#{slice}/views/parts/client_spec.rb")).to be false
           end

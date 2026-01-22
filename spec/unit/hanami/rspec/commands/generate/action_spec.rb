@@ -16,7 +16,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Action do
     context "app" do
       it "generates spec file" do
         within_application_directory do
-          subject.call({name: action_name})
+          subject.call(name: action_name)
 
           action_spec = <<~EXPECTED
             # frozen_string_literal: true
@@ -39,7 +39,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Action do
 
         it "generates spec file" do
           within_application_directory do
-            subject.call({name: action_name})
+            subject.call(name: action_name)
 
             # spec/<slice>/action_spec.rb
             action_spec = <<~EXPECTED
@@ -62,7 +62,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Action do
       context "skip_tests given" do
         it "does not generate a spec file" do
           within_application_directory do
-            subject.call({name: action_name, skip_tests: true})
+            subject.call(name: action_name, skip_tests: true)
 
             expect(fs.exist?("spec/actions/client/create_spec.rb")).to be false
           end
@@ -76,7 +76,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Action do
 
       it "generates spec file" do
         within_application_directory do
-          subject.call({slice: slice, name: action_name})
+          subject.call(slice: slice, name: action_name)
 
           action_spec = <<~EXPECTED
             # frozen_string_literal: true
@@ -97,7 +97,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Action do
       context "skip_tests given" do
         it "does not generate a spec file" do
           within_application_directory do
-            subject.call({slice: slice, name: action_name, skip_tests: true})
+            subject.call(slice: slice, name: action_name, skip_tests: true)
 
             expect(fs.exist?("spec/slices/#{slice}/actions/client/create_spec.rb")).to be false
           end

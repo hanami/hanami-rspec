@@ -21,6 +21,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/hanami/rspec/compare/v2.3.0...HEAD
 
+## [2.3.1] - 2026-01-23
+
+### Fixed
+
+- Allow command callbacks to run with both Dry CLI 1.3 and 1.4 (1.4 corrects a longstanding bug regarding argument passing to command callbacks, which we had previously worked around here). (@timriley in #41)
+
 ## [2.3.0] - 2025-11-12
 
 [2.3.0]: https://github.com/hanami/rspec/compare/v2.3.0.beta2...v2.3.0

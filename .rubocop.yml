@@ -1,28 +1,4 @@
-# Please keep AllCops, Bundler, Style, Metrics groups and then order cops
-# alphabetically
+# This file is synced from hanakai-rb/repo-sync
+
 inherit_from:
-  - https://raw.githubusercontent.com/hanami/devtools/main/.rubocop.yml
-Layout/LineLength:
-  Exclude:
-    - Gemfile
-Naming/MethodParameterName:
-  AllowedNames:
-    - fs
-Naming/HeredocDelimiterNaming:
-  Enabled: false
-Style/AccessorGrouping:
-  Enabled: false
-Style/BlockDelimiters:
-  Enabled: false
-Style/CommentedKeyword:
-  Enabled: false
-Style/HashSyntax:
-  EnforcedShorthandSyntax: either_consistent
-Style/LambdaCall:
-  Enabled: false
-Style/TrailingCommaInArguments:
-  Enabled: false
-Style/TrailingCommaInArrayLiteral:
-  Enabled: false
-Style/TrailingCommaInHashLiteral:
-  Enabled: false
+  - https://raw.githubusercontent.com/hanakai-rb/repo-sync/main/rubocop/rubocop.yml

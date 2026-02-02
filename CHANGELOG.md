@@ -2,8 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Break Versioning](https://www.taoensso.com/break-versioning).
 
 ## [Unreleased]
 
@@ -43,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [Aaron Allen] Change shared context name in generated `spec/support/requests.rb` to avoid a RuboCop RSpec offense (#40)
+- Change shared context name in generated `spec/support/requests.rb` to avoid a RuboCop RSpec offense. (Aaron Allen in #40)
 
 [2.3.0.beta1]: https://github.com/hanami/rspec/compare/v2.2.1...v2.3.0.beta1
 
@@ -51,7 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [Tim Riley] Modify `Gemfile` via a `before "install"` hook on the `hanami` CLI. This ensures that testing-related gems are installed as part of running `hanami new` (#30)
+- Modify `Gemfile` via a `before "install"` hook on the `hanami` CLI. This ensures that testing-related gems are installed as part of running `hanami new`. (Tim Riley in #30)
 
 [2.2.1]: https://github.com/hanami/rspec/compare/v2.2.0...v2.2.1
 
@@ -59,7 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [Paweł Świątkowski, Seb Wilgosz] Only enhance `generate` CLI commands if the relevant gems are bundled (#29)
+- Only enhance `generate` CLI commands if the relevant gems are bundled. (Paweł Świątkowski, Seb Wilgosz in #29)
 
 [2.2.0]: https://github.com/hanami/rspec/compare/v2.2.0.rc1...v2.2.0
 
@@ -67,11 +67,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [Tim Riley] As part of `hanami install`, add `database_cleaner-sequel` to the `Gemfile` and generate DatabaseCleaner configuration in `spec/support/db.rb` and `spec/support/db/cleaning.rb` (#28)
+- As part of `hanami install`, add `database_cleaner-sequel` to the `Gemfile` and generate DatabaseCleaner configuration in `spec/support/db.rb` and `spec/support/db/cleaning.rb`. (Tim Riley in #28)
 
 ### Changed
 
-- [Seb Wilgosz] Only enhance `generate` CLI commands if the relevant gems are bundled (#26)
+- Only enhance `generate` CLI commands if the relevant gems are bundled. (Seb Wilgosz in #26)
 
 [2.2.0.rc1]: https://github.com/hanami/rspec/compare/v2.2.0.beta1...v2.2.0.rc1
 
@@ -79,12 +79,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [Sean Collins] Include `Dry::Monads[:result]` in tests via `support/operations.rb`
+- Include `Dry::Monads[:result]` in tests via `support/operations.rb`. (Sean Collins)
 
 ### Changed
 
 - Drop support for Ruby 3.0
-- [Sean Collins] In generated `spec_helper.rb`, require all files under `spec/support/` in a loop, rather than via manual requires (#24)
+- In generated `spec_helper.rb`, require all files under `spec/support/` in a loop, rather than via manual requires. (Sean Collins in #24)
 
 [2.2.0.beta1]: https://github.com/hanami/rspec/compare/v2.1.0...v2.2.0.beta1
 
@@ -100,12 +100,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [Tim Riley] Skip generating tests for `hanami generate` when `--skip-tests` CLI option is given
-- [Tim Riley] Install Capybara and generate `spec/support/capybara.rb` in `hanami install` hook
+- Skip generating tests for `hanami generate` when `--skip-tests` CLI option is given. (Tim Riley)
+- Install Capybara and generate `spec/support/capybara.rb` in `hanami install` hook. (Tim Riley)
 
 ### Changed
 
-- [Tim Riley] Add explanatory code comments to `spec/support/rspec.rb` generated in `hanami install` hook
+- Add explanatory code comments to `spec/support/rspec.rb` generated in `hanami install` hook. (Tim Riley)
 
 [2.1.0.rc2]: https://github.com/hanami/rspec/compare/v2.1.0.rc1...v2.1.0.rc2
 
@@ -113,11 +113,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [Luca Guidi] Generate spec for `hanami generate part` command
+- Generate spec for `hanami generate part` command. (Luca Guidi)
 
 ### Changed
 
-- [Luca Guidi] Default request spec to expect 404, now that `hanami new` doesn't generate a default root route anymore
+- Default request spec to expect 404, now that `hanami new` doesn't generate a default root route anymore. (Luca Guidi)
 
 [2.1.0.rc1]: https://github.com/hanami/rspec/compare/v2.1.0.beta1...v2.1.0.rc1
 
@@ -129,7 +129,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [Luca Guidi] Official support for Ruby 3.2
+- Official support for Ruby 3.2. (Luca Guidi)
 
 [2.0.1]: https://github.com/hanami/rspec/compare/v2.0.0...v2.0.1
 
@@ -137,8 +137,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [Tim Riley] Use Zeitwerk to autoload the gem
-- [Luca Guidi] Support RSpec 3.12
+- Use Zeitwerk to autoload the gem. (Tim Riley)
+- Support RSpec 3.12. (Luca Guidi)
 
 [2.0.0]: https://github.com/hanami/rspec/compare/v2.0.0.rc1...v2.0.0
 
@@ -146,7 +146,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [Luca Guidi] Follow `hanami` versioning
+- Follow `hanami` versioning. (Luca Guidi)
 
 [2.0.0.rc1]: https://github.com/hanami/rspec/compare/v3.11.0.beta4...v2.0.0.rc1
 
@@ -154,7 +154,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [Luca Guidi] Generate slice specs under `spec/slices/[slice_name]/` (#9)
+- Generate slice specs under `spec/slices/[slice_name]/`. (Luca Guidi in #9)
 
 [3.11.0.beta4]: https://github.com/hanami/rspec/compare/v3.11.0.beta3...v3.11.0.beta4
 
@@ -162,8 +162,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [Luca Guidi] Hook into `hanami new` and `hanami generate` to respect name pluralization
-- [Luca Guidi] Hook into `hanami generate action` to generate action specs
+- Hook into `hanami new` and `hanami generate` to respect name pluralization. (Luca Guidi)
+- Hook into `hanami generate action` to generate action specs. (Luca Guidi)
 
 [3.11.0.beta3]: https://github.com/hanami/rspec/compare/v3.11.0.beta2...v3.11.0.beta3
 
@@ -171,7 +171,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [Luca Guidi] Hook into `hanami generate slice` to generate a slice directory in spec/ along with a placeholder base action spec (#5)
+- Hook into `hanami generate slice` to generate a slice directory in spec/ along with a placeholder base action spec. (Luca Guidi in #5)
 
 [3.11.0.beta2]: https://github.com/hanami/rspec/compare/v3.11.0.beta1...v3.11.0.beta2
 
@@ -179,6 +179,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [Luca Guidi] Hook into `hanami install` to setup RSpec + Rack::Test
+- Hook into `hanami install` to setup RSpec + Rack::Test. (Luca Guidi)
 
 [3.11.0.beta1]: https://github.com/hanami/rspec/releases/tag/v3.11.0.beta1

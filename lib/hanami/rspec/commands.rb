@@ -47,7 +47,7 @@ module Hanami
         def copy_dotrspec
           fs.cp(
             fs.expand_path(fs.join("generators", "dotrspec"), __dir__),
-            fs.expand_path(fs.join(".rspec")),
+            fs.expand_path(fs.join(".rspec"))
           )
         end
 

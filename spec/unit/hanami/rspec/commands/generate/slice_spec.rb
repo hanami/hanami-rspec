@@ -44,7 +44,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Slice do
       # expect(fs.read("spec/slices/#{slice}/repository_spec.rb")).to eq(repository_spec)
 
       # Keep file
-      keep = <<~EXPECTED # rubocop:disable Style/EmptyHeredoc
+      keep = <<~EXPECTED
       EXPECTED
 
       # spec/<slice>/actions/.keep

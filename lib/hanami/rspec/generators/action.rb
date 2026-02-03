@@ -36,7 +36,7 @@ module Hanami
             namespace: namespace,
             key: inflector.underscore(key),
             base_path: base_path,
-            extra_namespace: "Actions",
+            extra_namespace: "Actions"
           )
         end
 

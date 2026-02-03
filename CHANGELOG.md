@@ -19,13 +19,15 @@ and this project adheres to [Break Versioning](https://www.taoensso.com/break-ve
 
 ### Security
 
-[Unreleased]: https://github.com/hanami/rspec/compare/v2.3.0...HEAD
+[Unreleased]: https://github.com/hanami/rspec/compare/v2.3.1...HEAD
 
 ## [2.3.1] - 2026-01-23
 
 ### Fixed
 
-- Allow command callbacks to run with both Dry CLI 1.3 and 1.4 (1.4 corrects a longstanding bug regarding argument passing to command callbacks, which we had previously worked around here). (@timriley in #41)
+- Allow command callbacks to run with both Dry CLI 1.3 and 1.4 (1.4 corrects a longstanding bug regarding argument passing to command callbacks, which we had previously worked around here). (Tim Riley in #41)
+
+[2.3.1]: https://github.com/hanami/rspec/compare/v2.3.0...v2.3.1
 
 ## [2.3.0] - 2025-11-12
 
@@ -35,7 +37,7 @@ and this project adheres to [Break Versioning](https://www.taoensso.com/break-ve
 
 ### Changed
 
-- Drop support for Ruby 3.1
+- Drop support for Ruby 3.1.
 
 [2.3.0.beta2]: https://github.com/hanami/rspec/compare/v2.3.0.beta1...v2.3.0.beta2
 

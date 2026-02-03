@@ -1,18 +1,9 @@
-# Hanami::RSpec
+<!--- This file is synced from hanakai-rb/repo-sync -->
 
-RSpec and testing support for [Hanami applications](https://github.com/hanami/hanami).
+[rubygem]: https://rubygems.org/gems/hanami-rspec
+[actions]: https://github.com/hanami/hanami-rspec/actions
 
-## Status
-
-[![Gem Version](https://badge.fury.io/rb/hanami-rspec.svg)](https://badge.fury.io/rb/hanami-rspec)
-[![CI](https://github.com/hanami/rspec/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/hanami/rspec/actions?query=workflow%3Aci+branch%3Amain)
-
-## Contact
-
-- Home page: http://hanamirb.org
-- Mailing List: http://hanamirb.org/mailing-list
-- Bugs/Issues: https://github.com/hanami/rspec/issues
-- Chat: http://chat.hanamirb.org
+# Hanami RSpec [![Gem Version](https://badge.fury.io/rb/hanami-rspec.svg)][rubygem] [![CI Status](https://github.com/hanami/hanami-rspec/workflows/CI/badge.svg)][actions]
 
 ## Installation
 
@@ -41,14 +32,13 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/hanami/rspec. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/hanami/rspec/blob/main/CODE_OF_CONDUCT.md).
 
+## Links
+
+- [User documentation](https://hanamirb.org)
+- [API documentation](http://rubydoc.info/gems/hanami-rspec)
+
+
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+See `LICENSE` file.
 
-## Code of Conduct
-
-Everyone interacting in the `Hanami::RSpec` project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/hanami/rspec/blob/main/CODE_OF_CONDUCT.md).
-
-## Copyright
-
-Copyright © 2014–2024 Hanami Team – Released under MIT License

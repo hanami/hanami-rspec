@@ -35,7 +35,7 @@ module Hanami
       Hanami::CLI.before "install", Commands::Install
       Hanami::CLI.after "generate slice", Commands::Generate::Slice
 
-      if Hanami.bundled?("hanami-controller")
+      if Hanami.bundled?("hanami-action")
         Hanami::CLI.after "generate action", Commands::Generate::Action
       end
 

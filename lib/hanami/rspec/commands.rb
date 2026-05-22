@@ -116,17 +116,7 @@ module Hanami
         class Slice < Hanami::CLI::Command
           # @since 2.0.0
           # @api private
-          def call(options = nil, name: nil, **)
-            # Support multiple calling conventions for dry-cli cross-version compatibility:
-            #
-            # - dry-cli 1.3 calls with positional hash: call({name: "foo"})
-            # - dry-cli 1.4+: calls with keyword arguments: call(name: "foo")
-            #
-            # TODO: Remove this with Hanami 2.4 (which will require dry-cli 1.4+).
-            if options.is_a?(Hash)
-              name = options[:name]
-            end
-
+          def call(name: nil, **)
             slice = inflector.underscore(Shellwords.shellescape(name))
 
             generator = Generators::Slice.new(fs: fs, inflector: inflector)
@@ -139,19 +129,7 @@ module Hanami
         class Action < Hanami::CLI::Commands::App::Command
           # @since 2.0.0
           # @api private
-          def call(options = nil, name: nil, slice: nil, skip_tests: false, **)
-            # Support multiple calling conventions for dry-cli cross-version compatibility:
-            #
-            # - dry-cli 1.3 calls with positional hash: call({name: "foo"})
-            # - dry-cli 1.4+: calls with keyword arguments: call(name: "foo")
-            #
-            # TODO: Remove this with Hanami 2.4 (which will require dry-cli 1.4+).
-            if options.is_a?(Hash)
-              name = options[:name]
-              slice = options[:slice]
-              skip_tests = options[:skip_tests] || false
-            end
-
+          def call(name: nil, slice: nil, skip_tests: false, **)
             return if skip_tests
 
             slice = inflector.underscore(Shellwords.shellescape(slice)) if slice
@@ -170,19 +148,7 @@ module Hanami
         class Part < Hanami::CLI::Commands::App::Command
           # @since 2.1.0
           # @api private
-          def call(options = nil, name: nil, slice: nil, skip_tests: false, **)
-            # Support multiple calling conventions for dry-cli cross-version compatibility:
-            #
-            # - dry-cli 1.3 calls with positional hash: call({name: "foo"})
-            # - dry-cli 1.4+: calls with keyword arguments: call(name: "foo")
-            #
-            # TODO: Remove this with Hanami 2.4 (which will require dry-cli 1.4+).
-            if options.is_a?(Hash)
-              name = options[:name]
-              slice = options[:slice]
-              skip_tests = options[:skip_tests] || false
-            end
-
+          def call(name: nil, slice: nil, skip_tests: false, **)
             return if skip_tests
 
             slice = inflector.underscore(Shellwords.shellescape(slice)) if slice

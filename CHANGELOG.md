@@ -11,6 +11,8 @@ and this project adheres to [Break Versioning](https://www.taoensso.com/break-ve
 
 ### Changed
 
+- Use `prepend_before` for the generated DatabaseCleaner `:db` hook, so it runs before any other `before` hooks that might touch the database. This prevents factory calls in spec-level `before` blocks from running before the test transaction starts and leaking records across tests. (@timriley in #47)
+
 ### Deprecated
 
 ### Removed

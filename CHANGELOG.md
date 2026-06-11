@@ -11,8 +11,6 @@ and this project adheres to [Break Versioning](https://www.taoensso.com/break-ve
 
 ### Changed
 
-- Use `prepend_before` for the generated DatabaseCleaner `:db` hook, so it runs before any other `before` hooks that might touch the database. This prevents factory calls in spec-level `before` blocks from running before the test transaction starts and leaking records across tests. (@timriley in #47)
-
 ### Deprecated
 
 ### Removed
@@ -22,6 +20,16 @@ and this project adheres to [Break Versioning](https://www.taoensso.com/break-ve
 ### Security
 
 [Unreleased]: https://github.com/hanami/rspec/compare/v2.3.1...HEAD
+
+## [v3.0.0.rc1]
+
+### Changed
+
+- Use `prepend_before` for the generated DatabaseCleaner `:db` hook, so it runs before any other `before` hooks that might touch the database. This prevents factory calls in spec-level `before` blocks from running before the test transaction starts and leaking records across tests. (@timriley in #47)
+- Check for presence of hanami-action gem rather than hanami-controller (now retired). (@cllns in #44)
+- Require Ruby 3.3 or newer.
+
+[v3.0.0.rc1]: https://github.com/hanami/rspec/compare/v2.3.1...v3.0.0.rc1
 
 ## [2.3.1] - 2026-01-23
 

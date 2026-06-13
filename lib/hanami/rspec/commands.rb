@@ -4,14 +4,9 @@ require "shellwords"
 
 module Hanami
   module RSpec
-    # @since 2.0.0
     # @api private
     module Commands
-      # @since 2.0.0
-      # @api private
       class Install < Hanami::CLI::Command
-        # @since 2.0.0
-        # @api private
         def call(*, **)
           append_gemfile
           append_gitignore
@@ -108,14 +103,8 @@ module Hanami
         end
       end
 
-      # @since 2.0.0
-      # @api private
       module Generate
-        # @since 2.0.0
-        # @api private
         class Slice < Hanami::CLI::Command
-          # @since 2.0.0
-          # @api private
           def call(name: nil, **)
             slice = inflector.underscore(Shellwords.shellescape(name))
 
@@ -124,11 +113,7 @@ module Hanami
           end
         end
 
-        # @since 2.0.0
-        # @api private
         class Action < Hanami::CLI::Commands::App::Command
-          # @since 2.0.0
-          # @api private
           def call(name: nil, slice: nil, skip_tests: false, **)
             return if skip_tests
 
@@ -143,11 +128,7 @@ module Hanami
           end
         end
 
-        # @since 2.1.0
-        # @api private
         class Part < Hanami::CLI::Commands::App::Command
-          # @since 2.1.0
-          # @api private
           def call(name: nil, slice: nil, skip_tests: false, **)
             return if skip_tests
 
@@ -156,6 +137,36 @@ module Hanami
 
             generator = Generators::Part.new(fs: fs, inflector: inflector)
             generator.call(app.namespace, slice, name)
+          end
+        end
+
+        class Operation < Hanami::CLI::Commands::App::Command
+          def call(name: nil, slice: nil, skip_tests: false, **)
+            return if skip_tests
+
+            slice = inflector.underscore(Shellwords.shellescape(slice)) if slice
+            key = inflector.underscore(Shellwords.shellescape(name))
+
+            namespace = slice ? inflector.camelize(slice) : app.namespace
+            base_path = slice ? "spec/slices/#{slice}" : "spec"
+
+            generator = Generators::Operation.new(fs:, inflector:)
+            generator.call(key:, namespace:, base_path:)
+          end
+        end
+
+        class Mailer < Hanami::CLI::Commands::App::Command
+          def call(name: nil, slice: nil, skip_tests: false, **)
+            return if skip_tests
+
+            slice = inflector.underscore(Shellwords.shellescape(slice)) if slice
+            key = inflector.underscore(Shellwords.shellescape(name))
+
+            namespace = slice ? inflector.camelize(slice) : app.namespace
+            base_path = slice ? "spec/slices/#{slice}" : "spec"
+
+            generator = Generators::Mailer.new(fs:, inflector:)
+            generator.call(key:, namespace:, base_path:)
           end
         end
       end

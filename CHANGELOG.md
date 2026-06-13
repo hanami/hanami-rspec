@@ -19,9 +19,15 @@ and this project adheres to [Break Versioning](https://www.taoensso.com/break-ve
 
 ### Security
 
-[Unreleased]: https://github.com/hanami/rspec/compare/v2.3.1...HEAD
+[Unreleased]: https://github.com/hanami/rspec/compare/v3.0.0.rc1...HEAD
 
 ## [v3.0.0.rc1]
+
+### Added
+
+- Activate Dry Monads' RSpec extension in `spec/support/operations.rb`. (@timriley)
+- Generate a starter spec when running `hanami generate operation`. (@timriley)
+- Generate a starter spec when running `hanami generate mailer`. (@timriley)
 
 ### Changed
 

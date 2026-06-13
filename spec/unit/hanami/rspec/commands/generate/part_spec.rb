@@ -16,7 +16,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
     context "app" do
       context "without base part" do
         it "generates spec file" do
-          within_application_directory do
+          within_app_dir do
             subject.call(name: part_name)
 
             base_part_spec = <<~EXPECTED
@@ -52,7 +52,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
 
       context "with base part" do
         it "generates spec file" do
-          within_application_directory do
+          within_app_dir do
             fs.touch("spec/views/part_spec.rb")
 
             subject.call(name: part_name)
@@ -77,7 +77,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
 
       context "skip_tests given" do
         it "does not generate spec file" do
-          within_application_directory do
+          within_app_dir do
             subject.call(name: part_name, skip_tests: true)
 
             expect(fs.exist?("spec/views/parts/client_spec.rb")).to be false
@@ -92,7 +92,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
 
       context "without base part" do
         it "generates spec file" do
-          within_application_directory do
+          within_app_dir do
             subject.call(slice: slice, name: part_name)
 
             base_part_spec = <<~EXPECTED
@@ -142,7 +142,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
 
       context "with base part" do
         it "generates spec file" do
-          within_application_directory do
+          within_app_dir do
             fs.touch("spec/views/part_spec.rb")
             fs.touch("spec/slices/#{slice}/views/part_spec.rb")
 
@@ -167,7 +167,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
 
       context "skip_tests given" do
         it "does not generate spec file" do
-          within_application_directory do
+          within_app_dir do
             subject.call(slice: slice, name: part_name, skip_tests: true)
 
             expect(fs.exist?("spec/slices/#{slice}/views/parts/client_spec.rb")).to be false
@@ -179,7 +179,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Part do
 
   private
 
-  def within_application_directory(app: app_name)
+  def within_app_dir(app: app_name)
     dir = fs.join(TMP, SecureRandom.uuid, app)
 
     fs.mkdir(dir)

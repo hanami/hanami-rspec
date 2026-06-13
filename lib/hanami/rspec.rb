@@ -35,12 +35,20 @@ module Hanami
       Hanami::CLI.before "install", Commands::Install
       Hanami::CLI.after "generate slice", Commands::Generate::Slice
 
+      if Hanami.bundled?("dry-operation")
+        Hanami::CLI.after "generate operation", Commands::Generate::Operation
+      end
+
       if Hanami.bundled?("hanami-action")
         Hanami::CLI.after "generate action", Commands::Generate::Action
       end
 
       if Hanami.bundled?("hanami-view")
         Hanami::CLI.after "generate part", Commands::Generate::Part
+      end
+
+      if Hanami.bundled?("hanami-mailer")
+        Hanami::CLI.after "generate mailer", Commands::Generate::Mailer
       end
     end
   end

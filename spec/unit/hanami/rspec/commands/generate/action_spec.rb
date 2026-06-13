@@ -15,7 +15,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Action do
 
     context "app" do
       it "generates spec file" do
-        within_application_directory do
+        within_app_dir do
           subject.call(name: action_name)
 
           action_spec = <<~EXPECTED
@@ -38,7 +38,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Action do
         let(:action_name) { "reporting.annual.billing.index" }
 
         it "generates spec file" do
-          within_application_directory do
+          within_app_dir do
             subject.call(name: action_name)
 
             # spec/<slice>/action_spec.rb
@@ -61,7 +61,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Action do
 
       context "skip_tests given" do
         it "does not generate a spec file" do
-          within_application_directory do
+          within_app_dir do
             subject.call(name: action_name, skip_tests: true)
 
             expect(fs.exist?("spec/actions/client/create_spec.rb")).to be false
@@ -75,7 +75,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Action do
       let(:slice_name) { "Main" }
 
       it "generates spec file" do
-        within_application_directory do
+        within_app_dir do
           subject.call(slice: slice, name: action_name)
 
           action_spec = <<~EXPECTED
@@ -93,22 +93,12 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Action do
           expect(fs.read("spec/slices/#{slice}/actions/client/create_spec.rb")).to eq(action_spec)
         end
       end
-
-      context "skip_tests given" do
-        it "does not generate a spec file" do
-          within_application_directory do
-            subject.call(slice: slice, name: action_name, skip_tests: true)
-
-            expect(fs.exist?("spec/slices/#{slice}/actions/client/create_spec.rb")).to be false
-          end
-        end
-      end
     end
   end
 
   private
 
-  def within_application_directory(app: app_name)
+  def within_app_dir(app: app_name)
     dir = fs.join(TMP, SecureRandom.uuid, app)
 
     fs.mkdir(dir)

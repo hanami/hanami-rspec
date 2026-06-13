@@ -2,7 +2,8 @@
 
 require "dry/monads"
 
-RSpec.configure do |config|
-  # Provide `Success` and `Failure` for testing operation results
-  config.include Dry::Monads[:result]
-end
+# Load Dry Monads' RSpec extension.
+#
+# This provides `be_success` and `be_failure` matchers for operation results, along with `Success`
+# and `Failure` constructors for use within your examples.
+Dry::Monads.load_extensions(:rspec)

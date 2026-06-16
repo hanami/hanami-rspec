@@ -9,7 +9,7 @@ gemspec:
   summary: "Hanami RSpec generators and CLI commands"
   homepage: "https://hanamirb.org"
   runtime_dependencies:
-    - ["hanami-cli", "~> 2.3.0"]
+    - ["hanami-cli", "~> 3.0.0.rc"]
     - ["rspec", "~> 3.12"]
     - ["rake", "~> 13.0"]
     - ["zeitwerk", "~> 2.6"]

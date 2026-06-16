@@ -4,8 +4,7 @@ module Hanami
   module RSpec
     # The current hanami-rspec version.
     #
-    # @since 2.0.0
     # @api public
-    VERSION = "2.3.1"
+    VERSION = "3.0.0.rc1"
   end
 end

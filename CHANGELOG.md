@@ -9,6 +9,8 @@ and this project adheres to [Break Versioning](https://www.taoensso.com/break-ve
 
 ### Added
 
+- Generate `spec/support/mailers.rb` to reset recorded mail deliveries between examples tagged `:mailers`. Use this tag for the generated mailer tests. (@timriley in #49)
+
 ### Changed
 
 ### Deprecated

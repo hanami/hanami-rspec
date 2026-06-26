@@ -16,6 +16,7 @@ RSpec.describe Hanami::RSpec::Commands::Install do
     before do
       allow(Hanami).to receive(:bundled?).and_call_original
       allow(Hanami).to receive(:bundled?).with("hanami-db").and_return true
+      allow(Hanami).to receive(:bundled?).with("hanami-mailer").and_return true
     end
 
     around do |example|
@@ -215,6 +216,31 @@ RSpec.describe Hanami::RSpec::Commands::Install do
       EOF
       expect(fs.read("spec/support/operations.rb")).to eq(support_operations)
 
+      # spec/support/mailers.rb
+      support_mailers = <<~EOF
+        # frozen_string_literal: true
+
+        # Reset recorded mail deliveries between examples tagged `:mailers`
+        #
+        # In the test env, mail is delivered via a shared test delivery method, so recorded deliveries
+        # accumulate across examples. Tag any example that sends mail with `:mailers` to start with a clean
+        # slate:
+        #
+        #   RSpec.describe Mailers::Welcome, :mailers do
+        #     # ...
+        #   end
+        RSpec.configure do |config|
+          config.prepend_before :each, :mailers do
+            Hanami.app.with_slices.each do |slice|
+              next unless slice.key?("mailers.delivery_method")
+
+              slice["mailers.delivery_method"].clear
+            end
+          end
+        end
+      EOF
+      expect(fs.read("spec/support/mailers.rb")).to eq(support_mailers)
+
       # spec/support/requests.rb
       support_requests = <<~EOF
         # frozen_string_literal: true
@@ -274,6 +300,18 @@ RSpec.describe Hanami::RSpec::Commands::Install do
 
         expect(fs.exist?("spec/support/db.rb")).to be false
         expect(fs.exist?("spec/support/db/cleaning.rb")).to be false
+      end
+    end
+
+    context "hanami-mailer not bundled" do
+      before do
+        allow(Hanami).to receive(:bundled?).with("hanami-mailer").and_return false
+      end
+
+      it "does not add the mailers spec support file" do
+        subject.call(arbitrary_argument)
+
+        expect(fs.exist?("spec/support/mailers.rb")).to be false
       end
     end
   end

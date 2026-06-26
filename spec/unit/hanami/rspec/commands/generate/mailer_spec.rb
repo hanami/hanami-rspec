@@ -21,7 +21,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Mailer do
           mailer_spec = <<~EXPECTED
             # frozen_string_literal: true
 
-            RSpec.describe #{app_name}::Mailers::Welcome do
+            RSpec.describe #{app_name}::Mailers::Welcome, :mailers do
               subject(:mailer) { described_class.new }
 
               # Inspect the delivered message to set expectations on its contents:
@@ -49,7 +49,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Mailer do
             subject.call(name: mailer_name)
 
             expect(fs.read("spec/mailers/notifications/welcome_spec.rb"))
-              .to include("RSpec.describe #{app_name}::Mailers::Notifications::Welcome do")
+              .to include("RSpec.describe #{app_name}::Mailers::Notifications::Welcome, :mailers do")
           end
         end
       end
@@ -74,7 +74,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Mailer do
           subject.call(slice: slice, name: mailer_name)
 
           expect(fs.read("spec/slices/#{slice}/mailers/welcome_spec.rb"))
-            .to include("RSpec.describe #{slice_name}::Mailers::Welcome do")
+            .to include("RSpec.describe #{slice_name}::Mailers::Welcome, :mailers do")
         end
       end
     end

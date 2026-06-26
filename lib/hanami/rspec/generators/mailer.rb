@@ -37,7 +37,7 @@ module Hanami
           <<~RUBY
             # frozen_string_literal: true
 
-            RSpec.describe #{class_name} do
+            RSpec.describe #{class_name}, :mailers do
               subject(:mailer) { described_class.new }
 
               # Inspect the delivered message to set expectations on its contents:

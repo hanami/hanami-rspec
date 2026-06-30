@@ -6,6 +6,12 @@ eval_gemfile "Gemfile.devtools"
 
 gemspec
 
+# Work around RDoc/JRuby incompatibiltiy: rdoc 8 depends on rbs 4, whose native C extension can't
+# build on JRuby.
+#
+# Remove this once https://github.com/ruby/rdoc/issues/1746 is resolved.
+gem "rdoc", "< 8.0"
+
 unless ENV["CI"]
   gem "byebug", platforms: :mri
   gem "yard"

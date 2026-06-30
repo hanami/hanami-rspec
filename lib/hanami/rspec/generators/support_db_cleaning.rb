@@ -10,9 +10,7 @@ RSpec.configure do |config|
   #
   # Modify this proc (or any code below) if you only need specific databases cleaned.
   all_databases = -> {
-    slices = [Hanami.app] + Hanami.app.slices.with_nested
-
-    slices.each_with_object([]) { |slice, dbs|
+    Hanami.app.with_slices.each_with_object([]) { |slice, dbs|
       next unless slice.key?("db.rom")
 
       dbs.concat slice["db.rom"].gateways.values.map(&:connection)

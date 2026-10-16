@@ -99,7 +99,8 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Action do
   private
 
   def within_app_dir(app: app_name)
-    dir = fs.join(TMP, SecureRandom.uuid, app)
+    root = fs.join(TMP, SecureRandom.uuid)
+    dir = fs.join(root, app)
 
     fs.mkdir(dir)
     fs.chdir(dir) do
@@ -132,5 +133,7 @@ RSpec.describe Hanami::RSpec::Commands::Generate::Action do
 
       yield
     end
+  ensure
+    fs.delete_directory(root)
   end
 end

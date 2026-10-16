@@ -11,8 +11,6 @@ RSpec.describe Hanami::RSpec::Commands::Install do
     let(:app) { "synth" }
     let(:app_name) { "Synth" }
 
-    let(:arbitrary_argument) { {} }
-
     before do
       allow(Hanami).to receive(:bundled?).and_call_original
       allow(Hanami).to receive(:bundled?).with("hanami-db").and_return true
@@ -26,7 +24,7 @@ RSpec.describe Hanami::RSpec::Commands::Install do
     end
 
     it "copies a .rspec and spec helper" do
-      subject.call(arbitrary_argument)
+      subject.call
 
       # Gemfile
       gemfile = <<~EOF
@@ -280,7 +278,7 @@ RSpec.describe Hanami::RSpec::Commands::Install do
       end
 
       it "does not add the database_cleaner gem to the Gemfile" do
-        subject.call(arbitrary_argument)
+        subject.call
 
         # Gemfile
         gemfile = <<~EOF
@@ -294,7 +292,7 @@ RSpec.describe Hanami::RSpec::Commands::Install do
       end
 
       it "does not add DB-related spec support files" do
-        subject.call(arbitrary_argument)
+        subject.call
 
         expect(fs.exist?("spec/support/db.rb")).to be false
         expect(fs.exist?("spec/support/db/cleaning.rb")).to be false
@@ -307,7 +305,7 @@ RSpec.describe Hanami::RSpec::Commands::Install do
       end
 
       it "does not add the mailers spec support file" do
-        subject.call(arbitrary_argument)
+        subject.call
 
         expect(fs.exist?("spec/support/mailers.rb")).to be false
       end

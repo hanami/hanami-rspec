@@ -11,11 +11,15 @@ and this project adheres to [Break Versioning](https://www.taoensso.com/break-ve
 
 ### Changed
 
+- Declare the `--skip-tests` option for each `hanami generate` command that hanami-rspec hooks into, using Dry CLI's `Registry#option`. hanami-rspec no longer depends on hanami-cli to declare this option. (@timriley)
+
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+
+- Use the app's inflector when generating specs for `hanami generate slice`, so the module name in the generated spec respects the app's custom inflections (such as acronyms). (@timriley)
 
 ### Security
 

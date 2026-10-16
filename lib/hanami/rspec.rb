@@ -37,18 +37,26 @@ module Hanami
 
       if Hanami.bundled?("dry-operation")
         Hanami::CLI.after "generate operation", Commands::Generate::Operation
+        Hanami::CLI.option "generate operation", :skip_tests,
+          required: false, type: :flag, default: false, desc: "Skip test generation"
       end
 
       if Hanami.bundled?("hanami-action")
         Hanami::CLI.after "generate action", Commands::Generate::Action
+        Hanami::CLI.option "generate action", :skip_tests,
+          required: false, type: :flag, default: false, desc: "Skip test generation"
       end
 
       if Hanami.bundled?("hanami-view")
         Hanami::CLI.after "generate part", Commands::Generate::Part
+        Hanami::CLI.option "generate part", :skip_tests,
+          required: false, type: :flag, default: false, desc: "Skip test generation"
       end
 
       if Hanami.bundled?("hanami-mailer")
         Hanami::CLI.after "generate mailer", Commands::Generate::Mailer
+        Hanami::CLI.option "generate mailer", :skip_tests,
+          required: false, type: :flag, default: false, desc: "Skip test generation"
       end
     end
   end

@@ -7,7 +7,7 @@ module Hanami
     # @api private
     module Commands
       class Install < Hanami::CLI::Command
-        def call(*, **)
+        def call
           append_gemfile
           append_gitignore
           copy_dotrspec
@@ -114,17 +114,17 @@ module Hanami
       end
 
       module Generate
-        class Slice < Hanami::CLI::Command
-          def call(name: nil, **)
+        class Slice < Hanami::CLI::Commands::App::Command
+          def call(name:)
             slice = inflector.underscore(Shellwords.shellescape(name))
 
-            generator = Generators::Slice.new(fs: fs, inflector: inflector)
+            generator = Generators::Slice.new(fs:, inflector:)
             generator.call(slice)
           end
         end
 
         class Action < Hanami::CLI::Commands::App::Command
-          def call(name: nil, slice: nil, skip_tests: false, **)
+          def call(name:, slice: nil, skip_tests: false)
             return if skip_tests
 
             slice = inflector.underscore(Shellwords.shellescape(slice)) if slice
@@ -139,19 +139,19 @@ module Hanami
         end
 
         class Part < Hanami::CLI::Commands::App::Command
-          def call(name: nil, slice: nil, skip_tests: false, **)
+          def call(name:, slice: nil, skip_tests: false)
             return if skip_tests
 
             slice = inflector.underscore(Shellwords.shellescape(slice)) if slice
             name = inflector.underscore(Shellwords.shellescape(name))
 
-            generator = Generators::Part.new(fs: fs, inflector: inflector)
+            generator = Generators::Part.new(fs:, inflector:)
             generator.call(app.namespace, slice, name)
           end
         end
 
         class Operation < Hanami::CLI::Commands::App::Command
-          def call(name: nil, slice: nil, skip_tests: false, **)
+          def call(name:, slice: nil, skip_tests: false)
             return if skip_tests
 
             slice = inflector.underscore(Shellwords.shellescape(slice)) if slice
@@ -166,7 +166,7 @@ module Hanami
         end
 
         class Mailer < Hanami::CLI::Commands::App::Command
-          def call(name: nil, slice: nil, skip_tests: false, **)
+          def call(name:, slice: nil, skip_tests: false)
             return if skip_tests
 
             slice = inflector.underscore(Shellwords.shellescape(slice)) if slice

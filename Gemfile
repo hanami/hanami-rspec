@@ -20,3 +20,5 @@ end
 gem "hanami-utils", github: "hanami/utils", branch: "main"
 gem "hanami-cli", github: "hanami/cli", branch: "main"
 gem "hanami", github: "hanami/hanami", branch: "main"
+gem "dry-system", github: "dry-rb/dry-system", branch: "main"
+gem "dry-cli", github: "dry-rb/dry-cli", branch: "main"

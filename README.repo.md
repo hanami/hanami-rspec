@@ -12,7 +12,7 @@ And then execute:
 
 ```
 $ bundle install
-$ bundle exec hanami setup
+$ bundle exec hanami install
 ```
 
 ## Development
